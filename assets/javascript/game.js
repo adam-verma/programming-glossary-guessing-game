@@ -11,54 +11,54 @@ const displayText = document.getElementById("unknown-word-display");
     restartGame()
     // Begin game with any key
     document.onkeyup = function (event) {
-    if (displayText.textContent = event.key) {
-        letterToGuess(event.key);
-    };
-};
+        if (displayText.textContent = event.key) {
+            letterToGuess(event.key);
+        }
+    }
 
     // Lets you know if letter is right or wrong
     function letterToGuess(anything) {
         let rightGuess = true;
-        // let correctDing = document.createElement("Ding");
-        // let incorrectWop = document.createElement("Wop");
-        // correctDing.setAttribute("src", "");
-        // incorrectWop.setAttribute("src", "");
+        let correctDing = document.createElement("Ding");
+        let incorrectWop = document.createElement("Wop");
+        correctDing.setAttribute("src", "assets/sounds/for-sure.mp3");
+        incorrectWop.setAttribute("src", "assets/sounds/get-outta-here.mp3");   
 
         // Scans through string for letter
         for (i = 0; i < word.length; i++) {
             if (anything === word[i]) {
                 guessFinal[i] = anything;
                 rightGuess = true;
-                // correctDing.play(); 
+                correctDing.play(); 
                 if (guessFinal.join("") === word) {
                     gameScore++;
-                    // showGameHistory();
+                    showGameHistory();
                     restartGame();
                 }
             } 
         }
         if (!rightGuess) {
-            // incorrectWop.play();
-            // Sends wrong letters to new list 
+            incorrectWop.play();
+            // Checks if input is in array of wrong letters
             if (!typeLetters.includes(anything)) {
+            // Pushes input into array of wrong letters 
             typeLetters.push(anything);
             attempts--;
             }
             if (attempts === 0) {
-                // showGameHistory();
+                showGameHistory();
                 restartGame();
             }
             console.log(attempts)
             }
     }
 
-    // function showGameHistory() {
-    //     document.getElementById("gameScore").textContent = "You have a score of: " + gameScore;
-    //     document.getElementById("attempts").textContent = "The number of guesses remaining: " + attempts;
-    //     document.getElementById("typeLetters").textContent = "The letters you guessed: " + typeLetters;
-    //     document.getElementById("guessFinal").textContent = "Right now you have guessed: " + guessFinal.join(" ");
-    // }
-
+    function showGameHistory() {
+        document.getElementById("gameScore").textContent = "You have a score of: " + gameScore;
+        document.getElementById("attempts").textContent = "The number of guesses remaining: " + attempts;
+        document.getElementById("typeLetters").textContent = "The letters you guessed: " + typeLetters;
+        document.getElementById("guessFinal").textContent = "Right now you have guessed: " + guessFinal.join(" ");
+    }
     function restartGame() {
         attempts = maxGuess;
         word = guessWords[Math.floor(Math.random() * guessWords.length)].toUpperCase();
@@ -75,5 +75,4 @@ const displayText = document.getElementById("unknown-word-display");
             }
         }
         
-    }
-
+    };
