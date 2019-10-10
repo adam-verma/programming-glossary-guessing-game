@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="style.css" type="text/css"
+    href = "assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="jumbotron">
+
+            <h1 class="text-center">Welcome to the Glossary Guessing Game</h1>
+        
+            <div class="text-center">
+        
+                <!-- Here we have our button with id random-button -->
+                <button id="random-button" class="btn btn-primary btn-lg"><h1>?</h1></button>
+        
+            </div>
+        
+    </div>
+    
+    <!-- Blank word displayed here  -->
+    <h1 class="text-center" id="unknown-word-display"></h1>
+    <div class = "container"></div>
+            <!-- const el = document.getElementById("code-output");
+            el.textContent = 'Hello World!';
+            const heading = document.createElement('h1');
+            heading.innerHTML = '<strong> Guessing Game <strong>';
+            heading.setAttribute('style','color: #fff'); -->
+    <h2 id="gameScore">Your Score</h2>
+    <h2 id="attempts">Guesses Left</h2>
+    <h2 id="typeLetters">Already Guessed</h2> 
+    <h2 id="guessFinal">Your Current Guess</h2>
+    </div>
+    <script src="assets/javascript/game.js">
+       
+    </script>
+</body>
+</html>
+
+
