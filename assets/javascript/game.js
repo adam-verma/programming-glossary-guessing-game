@@ -4,39 +4,39 @@ const guessWords = ['instantiate', 'function call', 'double precision', 'declara
 const maxGuess = 6
 let typeLetters = []
 let guessFinal = []
-let word = []
+let word = ''
 let attempts
 let gameScore = 0
 const displayText = document.getElementById("unknown-word-display");
     restartGame()
     // Begin game with any key
     document.onkeyup = function (event) {
-        if (displayText.textContent = event.key) {
-            letterToGuess(event.key);
-        }
+        letterToGuess(event.key.toUpperCase());
     }
-
+    
     // Lets you know if letter is right or wrong
     function letterToGuess(anything) {
+        // rightGuess is a boolean for a correct input
         let rightGuess = true;
-        let correctDing = document.createElement("Ding");
-        let incorrectWop = document.createElement("Wop");
-        correctDing.setAttribute("src", "assets/sounds/for-sure.mp3");
-        incorrectWop.setAttribute("src", "assets/sounds/get-outta-here.mp3");   
-
+        // let correctDing = document.createElement("Ding");
+        // let incorrectWop = document.createElement("Wop");
+        // correctDing.setAttribute("src", "assets/sounds/for-sure.mp3");
+        // incorrectWop.setAttribute("src", "assets/sounds/get-outta-here.mp3");   
         // Scans through string for letter
-        for (i = 0; i < word.length; i++) {
+        for (let i = 0; i < word.length; i++) {
             if (anything === word[i]) {
+                console.log(word[i])
                 guessFinal[i] = anything;
                 rightGuess = true;
-                correctDing.play(); 
-                if (guessFinal.join("") === word) {
+                // correctDing.play(); 
+            } 
+            if (guessFinal.join("") === word) {
                     gameScore++;
                     showGameHistory();
                     restartGame();
                 }
-            } 
         }
+        console.log(guessFinal)
         if (!rightGuess) {
             incorrectWop.play();
             // Checks if input is in array of wrong letters
@@ -62,17 +62,17 @@ const displayText = document.getElementById("unknown-word-display");
     function restartGame() {
         attempts = maxGuess;
         word = guessWords[Math.floor(Math.random() * guessWords.length)].toUpperCase();
-        console.log(word);
+        console.log(word)
         typeLetters = [];
         guessFinal = [];
         for (i = 0; i < word.length; i++) {
             if (word[i] === " ") {
                 // Adds spaces where needed
-                guessFinal.push(" ");
+                guessFinal.push("-");
                 // Adds underscores where needed    
             } else {
                 guessFinal.push("_");
             }
         }
-        
+        displayText.textContent = guessFinal.join(" ")
     };
